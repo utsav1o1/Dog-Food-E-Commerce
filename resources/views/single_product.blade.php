@@ -21,6 +21,7 @@
                             <h5 class="text-primary mb-0">{{ $product->sale_price }}</h5>
                             <h5 class="text-primary mb-0" style="text-decoration: line-through;"> ${{ $product->price }}
                             </h5>
+            
                         @else
                             <h5 class="text-primary mb-0">${{ $product->price }}</h5>
                         @endif

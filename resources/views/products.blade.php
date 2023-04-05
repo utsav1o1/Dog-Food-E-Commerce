@@ -9,7 +9,7 @@
             <h1 class="display-5 text-uppercase mb-0">Products For Your Best Friends</h1>
         </div>
         <div class="row">
-           @foreach ($products as $product)
+           @foreach ($products as $product) 
                
            
              <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
