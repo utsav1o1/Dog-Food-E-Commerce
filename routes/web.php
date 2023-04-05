@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,10 @@ Route::get('/product', function(){
 Route::get('/products',[ProjectController::class,'products'] )->name('products');
 Route::get('/product/{id}',[ProjectController::class,'single_product'] )->name('single_product');
 
+Route::get('/cart',[CartController::class,'cart'])->name('cart');
+Route::post('/add_to_cart',[CartController::class, 'add_to_cart'])->name('add_to_cart');
+Route::get('/add_to_cart', function(){
+    return redirect('/');
+});
+
+Route::post('/remove',[CartController::class, 'remove'])->name('remove');
