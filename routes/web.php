@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,11 +15,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[ProjectController::class,'index'])->name('home');
+Route::get('/', [ProjectController::class, 'index'])->name('home');
 
-Route::get('/product', function(){
+Route::get('/product', function () {
     return redirect('/');
-} );
-Route::get('/products',[ProjectController::class,'products'] )->name('products');
-Route::get('/product/{id}',[ProjectController::class,'single_product'] )->name('single_product');
+});
+Route::get('/products', [ProjectController::class, 'products'])->name('products');
+Route::get('/product/{id}', [ProjectController::class, 'single_product'])->name('single_product');
 
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::post('/add_to_cart', [CartController::class, 'add_to_cart'])->name('add_to_cart');
+Route::get('/add_to_cart', function () {
+    return redirect('/');
+});
+
+Route::post('/remove', [CartController::class, 'remove'])->name('remove');
+Route::get('/remove', function () {
+    return redirect('/cart');
+});
+
+Route::post('/edit_product_quantity', [CartController::class, 'edit_quantity'])->name('edit_quantity');
+Route::get('/edit_product_quantity', function () {
+    return redirect('/cart');
+});
+
+Route::get('/about', function(){
+    return view('about');
+})->name('about');

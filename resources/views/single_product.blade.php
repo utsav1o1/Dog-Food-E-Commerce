@@ -21,11 +21,24 @@
                             <h5 class="text-primary mb-0">{{ $product->sale_price }}</h5>
                             <h5 class="text-primary mb-0" style="text-decoration: line-through;"> ${{ $product->price }}
                             </h5>
+            
                         @else
                             <h5 class="text-primary mb-0">${{ $product->price }}</h5>
                         @endif
                         <div class="btn-action d-flex justify-content-center">
-                            <a class="btn btn-primary py-2 px-3" href=""><i class="bi bi-cart"></i></a>
+                            <form method="POST" action="{{ route('add_to_cart') }}">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <input type="hidden" name="name" value="{{ $product->name }}">
+                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                <input type="hidden" name="sale_price" value="{{ $product->sale_price }}">
+                                <input type="hidden" name="image" value="{{ $product->image }}">
+                                <input type="hidden" name="quantity" value="1">
+
+                                <button class="btn btn-primary py-2 px-3" type="submit"><i
+                                        class="bi bi-cart"></i></button>
+
+                            </form>
 
                         </div>
                     </div>

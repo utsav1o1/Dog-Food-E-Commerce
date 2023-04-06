@@ -75,12 +75,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="product.html" class="nav-item nav-link">Products</a>
+                <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
+                <a href="{{route('about')}}" class="nav-item nav-link">About</a>
+                <a href="{{route('products')}}" class="nav-item nav-link">Products</a>
                 
         
-                <a href="contact.html" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Cart <i class="bi bi-arrow-right"></i></a>
+                <a href="{{route('cart')}}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Cart <i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
     </nav>

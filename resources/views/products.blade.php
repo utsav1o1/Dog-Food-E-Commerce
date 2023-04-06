@@ -9,7 +9,7 @@
             <h1 class="display-5 text-uppercase mb-0">Products For Your Best Friends</h1>
         </div>
         <div class="row">
-           @foreach ($products as $product)
+           @foreach ($products as $product) 
                
            
              <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
@@ -18,7 +18,19 @@
                     <h6 class="text-uppercase">{{$product->name}}</h6>
                     <h5 class="text-primary mb-0">${{$product->price}}</h5>
                     <div class="btn-action d-flex justify-content-center">
-                        <a class="btn btn-primary py-2 px-3" href=""><i class="bi bi-cart"></i></a>
+                        <form method="POST" action="{{ route('add_to_cart') }}">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <input type="hidden" name="name" value="{{ $product->name }}">
+                            <input type="hidden" name="price" value="{{ $product->price }}">
+                            <input type="hidden" name="sale_price" value="{{ $product->sale_price }}">
+                            <input type="hidden" name="image" value="{{ $product->image }}">
+                            <input type="hidden" name="quantity" value="1">
+
+                            <button class="btn btn-primary py-2 px-3" type="submit"><i
+                                    class="bi bi-cart"></i></button>
+
+                        </form>
                         <a class="btn btn-primary py-2 px-3" href="{{route('single_product',['id'=>$product->id])}}"><i class="bi bi-eye"></i></a>
                     </div>
                 </div>
