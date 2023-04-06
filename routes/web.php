@@ -38,3 +38,7 @@ Route::post('/edit_product_quantity', [CartController::class, 'edit_quantity'])-
 Route::get('/edit_product_quantity', function () {
     return redirect('/cart');
 });
+
+Route::get('/about', function(){
+    return view('about');
+})->name('about');
