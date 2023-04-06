@@ -30,7 +30,7 @@
                                             <p>{{ $product['name'] }}</p>
                                             <small><span>$</span>{{ $product['price'] }}</small>
                                             <br>
-                                            <form method="POST" action="{{route('remove')}}">
+                                            <form method="POST" action="{{ route('remove') }}">
                                                 @csrf
                                                 <input type="submit" name="remove_btn" class="remove-btn" value="remove">
                                                 <input type="hidden" name="id" value="{{ $product['id'] }}">
@@ -40,13 +40,13 @@
                                 </td>
 
                                 <td>
-                                    <form method="POST" action="{{ route('edit_quantity')}}">
+                                    <form method="POST" action="{{ route('edit_quantity') }}">
                                         @csrf
                                         <input type="submit" value="-" class="edit-btn"
                                             name="decrease_product_quantity_btn">
-                                        <input type="hidden" name="id" value="{{$product['id']}}" >
+                                        <input type="hidden" name="id" value="{{ $product['id'] }}">
                                         <input type="number" name="quantity" value="{{ $product['quantity'] }}" readonly>
-                                        
+
                                         <input type="submit" value="+" class="edit-btn"
                                             name="increase_product_quantity_btn">
                                     </form>
@@ -78,8 +78,12 @@
 
                 <div class="checkout-container">
 
-                    <form>
-                        <input type="submit" class="btn checkout-btn" value="Checkout" name="">
+                    <form method="GET" action="{{ route('checkout') }}">
+                        @if (Session::has('total'))
+                            @if (Session::get('total') != null)
+                                <input type="submit" class="btn checkout-btn" value="Checkout" name="">
+                            @endif
+                        @endif
                     </form>
 
 

@@ -164,4 +164,9 @@ class CartController extends Controller
         return view('cart');
         
     }
+
+
+    function checkout(){
+        return view ('checkout');
+    }
 }

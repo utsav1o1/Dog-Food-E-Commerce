@@ -42,3 +42,6 @@ Route::get('/edit_product_quantity', function () {
 Route::get('/about', function(){
     return view('about');
 })->name('about');
+
+
+Route::get('/checkout',[CartController::class, 'checkout'])->name('checkout');
